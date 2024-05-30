@@ -8,15 +8,7 @@ import { TransactionReceipt } from "viem";
 export const DonateBop = () => {
   const [visible, setVisible] = useState(true);
   const [amount, setAmount] = useState<string | undefined>(undefined);
-
-  const { writeAsync, isLoading } = useScaffoldWriteContract({
-    contractName: "BopHoardingContract",
-    functionName: "DonationPool",
-    args: amount ? [amount] : [],
-    onBlockConfirmation: (txnReceipt: TransactionReceipt) => {
-      console.log("📦 Transaction blockHash", txnReceipt.blockHash);
-    },
-  });
+  const { writeContractAsync } = useScaffoldWriteContract("BopHoardingContract");
 
   return (
     <div className="flex bg-[url('/assets/background.jpeg')] relative pb-10">
@@ -34,19 +26,20 @@ export const DonateBop = () => {
               />
               <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
                 <div className="flex rounded-full border-2 border-primary p-1">
-                  <button
-                    className="btn btn-primary rounded-full capitalize font-normal font-white w-24 flex items-center gap-1 hover:gap-2 transition-all tracking-widest"
-                    onClick={() => writeAsync()}
-                    disabled={isLoading}
-                  >
-                    {isLoading ? (
-                      <span className="loading loading-spinner loading-sm"></span>
-                    ) : (
-                      <>
-                        Donate <ArrowSmallRightIcon className="w-3 h-3 mt-0.5" />
-                      </>
-                    )}
-                  </button>
+                <button
+              className="btn btn-primary uppercase"
+                    onClick={async () => {
+                      try {
+                        if (amount !== undefined) {
+                          await writeContractAsync({ functionName: "DonationPool", args: [BigInt(amount)] });
+                        }
+                      } catch (err) {
+                        console.error("Error calling execute function");
+                      }
+                    }}
+            >
+              Donate!
+            </button>
                 </div>
               </div>
             </div>

@@ -10,14 +10,10 @@ export const ApproveBop = () => {
   const [amount, approve_amount] = useState("");
   const address = "0xB2c6F1f46944bd34f26363bAb3848aCB8b8f546d";
 
-  const { writeAsync, isLoading } = useScaffoldWriteContract<BopToken>({
-    contractName: "BopToken",
-    functionName: "approve",
-    args: [address, amount],
-    onBlockConfirmation: (txnReceipt: TransactionReceipt) => {
-      console.log("📦 Transaction blockHash", txnReceipt.blockHash);
-    },
-  });
+ 
+
+  const { writeContractAsync } = useScaffoldWriteContract("BopToken");
+
 
   return (
     <div className="flex bg-[url('/assets/background.jpeg')] relative pb-10">
@@ -35,19 +31,18 @@ export const ApproveBop = () => {
               />
               <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
                 <div className="flex rounded-full border-2 border-primary p-1">
-                  <button
-                    className="btn btn-primary rounded-full capitalize font-normal font-white w-24 flex items-center gap-1 hover:gap-2 transition-all tracking-widest"
-                    onClick={() => writeAsync()}
-                    disabled={isLoading}
-                  >
-                    {isLoading ? (
-                      <span className="loading loading-spinner loading-sm"></span>
-                    ) : (
-                      <>
-                        Approve <ArrowSmallRightIcon className="w-3 h-3 mt-0.5" />
-                      </>
-                    )}
-                  </button>
+                <button
+              className="btn btn-primary uppercase"
+                    onClick={async () => {
+                      try {
+                        await writeContractAsync({ functionName: "approve", args: [address, BigInt(amount)] });
+                      } catch (err) {
+                        console.error("Error calling execute function");
+                      }
+                    }}
+            >
+              Approve!
+            </button>
                 </div>
               </div>
             </div>

@@ -7,16 +7,9 @@ import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
 import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 
 export const Claim = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [visible, setVisible] = useState(true);
-
-  const { writeAsync, isLoading } = useScaffoldWriteContract({
-    contractName: "BopHoardingContract",
-    functionName: "ClaimReward",
-    onBlockConfirmation: txnReceipt => {
-      console.log("📦 Transaction blockHash", txnReceipt.blockHash);
-    },
-  });
+  const [amount, setAmount] = useState<string | undefined>(undefined);
+  const { writeContractAsync } = useScaffoldWriteContract("BopHoardingContract");
 
   return (
     <div className="flex bg-[url('/assets/background.jpeg')] relative pb-10">
@@ -31,19 +24,20 @@ export const Claim = () => {
             <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-5">
               <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
                 <div className="flex rounded-full border-2 border-primary p-1">
-                  <button
-                    className="btn btn-secondary rounded-full capitalize font-normal font-white w-24 flex items-center gap-1 hover:gap-2 transition-all tracking-widest"
-                    onClick={() => writeAsync()}
-                    disabled={isLoading}
-                  >
-                    {isLoading ? (
-                      <span className="loading loading-spinner loading-sm"></span>
-                    ) : (
-                      <>
-                        Claim <ArrowSmallRightIcon className="w-3 h-3 mt-0.5" />
-                      </>
-                    )}
-                  </button>
+                <button
+              className="btn btn-primary uppercase"
+                    onClick={async () => {
+                      try {
+                         {
+                          await writeContractAsync({ functionName: "ClaimReward" });
+                        }
+                      } catch (err) {
+                        console.error("Error calling execute function");
+                      }
+                    }}
+            >
+              Claim!
+            </button>
                 </div>
               </div>
             </div>
