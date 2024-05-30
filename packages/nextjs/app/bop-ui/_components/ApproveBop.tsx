@@ -9,9 +9,6 @@ export const ApproveBop = () => {
   const [visible, setVisible] = useState(true);
   const [amount, approve_amount] = useState("");
   const address = "0xB2c6F1f46944bd34f26363bAb3848aCB8b8f546d";
-
- 
-
   const { writeContractAsync } = useScaffoldWriteContract("BopToken");
 
 

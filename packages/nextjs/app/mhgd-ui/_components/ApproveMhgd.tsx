@@ -8,23 +8,15 @@ import { TransactionReceipt } from "viem";
 export const ApproveMhgd = () => {
   const [visible, setVisible] = useState(true);
   const [amount, approve_amount] = useState("");
-  const address = "0xB2c6F1f46944bd34f26363bAb3848aCB8b8f546d";
-
-  const { writeAsync, isLoading } = useScaffoldWriteContract<BopToken>({
-    contractName: "BopToken",
-    functionName: "approve",
-    args: [address, amount],
-    onBlockConfirmation: (txnReceipt: TransactionReceipt) => {
-      console.log("📦 Transaction blockHash", txnReceipt.blockHash);
-    },
-  });
+  const address = "0x0396362d2fDC82aA0e630E1A2878AE8742909560";
+  const { writeContractAsync } = useScaffoldWriteContract("MhgdToken");
 
   return (
     <div className="flex bg-[url('/assets/background.jpeg')] relative pb-10">
       <div className="flex flex-col w-full mx-5 sm:mx-8 2xl:mx-20 items-center">
         <div className={`mt-10 flex gap-2 ${visible ? "" : "invisible"} max-w-2xl`}>
           <div className="flex flex-col mt-6 px-7 py-8 bg-base-200 opacity-80 rounded-2xl shadow-lg border-2 border-primary">
-            <span className="text-4xl sm:text-6xl text-black">Approve BOP</span>
+            <span className="text-4xl sm:text-6xl text-black">Approve MHGD</span>
 
             <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-5">
               <input
@@ -35,19 +27,18 @@ export const ApproveMhgd = () => {
               />
               <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
                 <div className="flex rounded-full border-2 border-primary p-1">
-                  <button
-                    className="btn btn-primary rounded-full capitalize font-normal font-white w-24 flex items-center gap-1 hover:gap-2 transition-all tracking-widest"
-                    onClick={() => writeAsync()}
-                    disabled={isLoading}
-                  >
-                    {isLoading ? (
-                      <span className="loading loading-spinner loading-sm"></span>
-                    ) : (
-                      <>
-                        Approve <ArrowSmallRightIcon className="w-3 h-3 mt-0.5" />
-                      </>
-                    )}
-                  </button>
+                <button
+              className="btn btn-primary uppercase"
+                    onClick={async () => {
+                      try {
+                        await writeContractAsync({ functionName: "approve", args: [address, BigInt(amount)] });
+                      } catch (err) {
+                        console.error("Error calling execute function");
+                      }
+                    }}
+            >
+              Approve!
+            </button>
                 </div>
               </div>
             </div>

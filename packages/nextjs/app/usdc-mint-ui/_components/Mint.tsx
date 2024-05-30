@@ -9,16 +9,7 @@ import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 export const Mint = () => {
   const [visible, setVisible] = useState(true);
   const [usdcAmount, setUsdcAmount] = useState("");
-  
-
-  const { writeAsync, isLoading } = useScaffoldWriteContract({
-    contractName: "MhgdUsdcMint",
-    functionName: "mint",
-    args: [usdcAmount],
-    onBlockConfirmation: txnReceipt => {
-      console.log("📦 Transaction blockHash", txnReceipt.blockHash);
-    },
-  });
+  const { writeContractAsync } = useScaffoldWriteContract("MhgdUsdcMint");
 
   return (
     <div className="grid justify-center items-center bg-base-300 relative pb-10">
@@ -71,19 +62,18 @@ export const Mint = () => {
           />
           <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
             <div className="flex rounded-full border-2 border-primary p-1">
-              <button
-                className="btn btn-primary rounded-full capitalize font-normal font-white w-24 flex items-center gap-1 hover:gap-2 transition-all tracking-widest"
-                onClick={() => writeAsync()}
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <span className="loading loading-spinner loading-sm"></span>
-                ) : (
-                  <>
-                    Mint <ArrowSmallRightIcon className="w-3 h-3 mt-0.5" />
-                  </>
-                )}
-              </button>
+            <button
+              className="btn btn-primary uppercase"
+                    onClick={async () => {
+                      try {
+                        await writeContractAsync({ functionName: "mint", args: [BigInt(usdcAmount)] });
+                      } catch (err) {
+                        console.error("Error calling execute function");
+                      }
+                    }}
+            >
+              Mint!
+            </button>
     </div>
     </div>
     </div>
