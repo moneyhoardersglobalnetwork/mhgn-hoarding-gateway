@@ -1,5 +1,5 @@
 {
-  "name": "se-2",
+  "name": "mhgn-hoarding-gateway-full",
   "version": "0.0.1",
   "private": true,
   "workspaces": {
@@ -42,5 +42,11 @@
   },
   "engines": {
     "node": ">=18.17.0"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "^1.1.1",
+    "@chainlink/contracts-ccip": "^1.4.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "ethers": "^6.12.1"
   }
 }

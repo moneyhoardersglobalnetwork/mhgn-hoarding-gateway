@@ -47,23 +47,20 @@ export const Footer = () => {
         <ul className="menu menu-horizontal w-full">
           <div className="flex justify-center items-center gap-2 text-sm w-full">
             <div className="text-center">
-              <a href="https://github.com/scaffold-eth/se-2" target="_blank" rel="noreferrer" className="link">
+              <a href="https://github.com/moneyhoardersglobalnetwork/mhgn-hoarding-gateway-full" target="_blank" rel="noreferrer" className="link">
                 Fork me
               </a>
             </div>
             <span>·</span>
-            <div className="flex justify-center items-center gap-2">
-              <p className="m-0 text-center">
-                Built with <HeartIcon className="inline-block h-4 w-4" /> at
-              </p>
+            <div>
+              Built with <HeartIcon className="inline-block h-4 w-4" /> by 🏰{" "}
               <a
-                className="flex justify-center items-center gap-1"
                 href="https://buidlguidl.com/"
                 target="_blank"
                 rel="noreferrer"
+                className="underline underline-offset-2"
               >
-                <BuidlGuidlLogo className="w-3 h-5 pb-1" />
-                <span className="link">BuidlGuidl</span>
+                M.H.G.N Core Devs + BuidlGuidl
               </a>
             </div>
             <span>·</span>

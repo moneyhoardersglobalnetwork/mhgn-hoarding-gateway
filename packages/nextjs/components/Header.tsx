@@ -4,7 +4,7 @@ import React, { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
+import { BanknotesIcon, CurrencyDollarIcon, Bars3Icon, BugAntIcon, MagnifyingGlassIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
@@ -18,6 +18,26 @@ export const menuLinks: HeaderMenuLink[] = [
   {
     label: "Home",
     href: "/",
+  },
+  {
+    label: "BOP UI",
+    href: "/bop-ui",
+    icon: <BanknotesIcon className="h-4 w-4" />,
+  },
+  {
+    label: "MHGD UI",
+    href: "/mhgd-ui",
+    icon: <CurrencyDollarIcon className="h-4 w-4" />,
+  },
+  {
+    label: "MHGD-DAI MINT",
+    href: "/dai-mint-ui",
+    icon: <CurrencyDollarIcon className="h-4 w-4" />,
+  },
+  {
+    label: "MHGD-USDC MINT",
+    href: "/usdc-mint-ui",
+    icon: <BugAntIcon className="h-4 w-4" />,
   },
   {
     label: "Debug Contracts",
@@ -89,12 +109,8 @@ export const Header = () => {
           )}
         </div>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
-          <div className="flex relative w-10 h-10">
-            <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-bold leading-tight">Scaffold-ETH</span>
-            <span className="text-xs">Ethereum dev stack</span>
+          <div className="flex relative w-40 h-20">
+            <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.png" />
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">

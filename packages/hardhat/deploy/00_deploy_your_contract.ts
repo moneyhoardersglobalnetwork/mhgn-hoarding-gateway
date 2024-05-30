@@ -1,6 +1,5 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { Contract } from "ethers";
 
 /**
  * Deploys a contract named "YourContract" using the deployer account and
@@ -12,7 +11,7 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   /*
     On localhost, the deployer account is the one that comes with Hardhat, which is already funded.
 
-    When deploying to live networks (e.g `yarn deploy --network sepolia`), the deployer account
+    When deploying to live networks (e.g `yarn deploy --network goerli`), the deployer account
     should have sufficient balance to pay for the gas fees for contract creation.
 
     You can generate a random account with `yarn generate` which will fill DEPLOYER_PRIVATE_KEY
@@ -21,7 +20,10 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   */
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
-
+  
+  //const tokenAddress = "0x649220e012e6D760502964b56B5a7E387084cA8C"; // MHGD token
+  const _tokenAddress = "0x76f9d116a4263b0b193E3174bC5b52946B10548b"; //BOP token
+ /
   await deploy("YourContract", {
     from: deployer,
     // Contract constructor arguments
@@ -32,9 +34,68 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
     autoMine: true,
   });
 
-  // Get the deployed contract to interact with it after deploying.
-  const yourContract = await hre.ethers.getContract<Contract>("YourContract", deployer);
-  console.log("👋 Initial greeting:", await yourContract.greeting());
+  await deploy("BopToken", {
+    from: deployer,
+    // Contract constructor arguments
+    args: [],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+
+  await deploy("MhgdToken", {
+    from: deployer,
+    // Contract constructor arguments
+    args: [],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+
+  await deploy("MhgdUsdcMint", {
+    from: deployer,
+    // Contract constructor arguments
+    args: [deployer],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+  
+  await deploy("BopHoardingContract", {
+    from: deployer,
+    // Contract constructor arguments
+    args: [],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+
+  await deploy("MhgdHoardingContract", {
+    from: deployer,
+    // Contract constructor arguments
+    args: [],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+
+  await deploy("BopFaucetContract", {
+    from: deployer,
+    // Contract constructor arguments
+    args: [_tokenAddress],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+
+  // Get the deployed contract
+  // const yourContract = await hre.ethers.getContract("YourContract", deployer);
 };
 
 export default deployYourContract;
@@ -42,3 +103,10 @@ export default deployYourContract;
 // Tags are useful if you have multiple deploy files and only want to run one of them.
 // e.g. yarn deploy --tags YourContract
 deployYourContract.tags = ["YourContract"];
+deployYourContract.tags = ["BopToken"];
+deployYourContract.tags = ["MhgdToken"];
+deployYourContract.tags = ["MhgdHoardingContract"];
+deployYourContract.tags = ["BopFaucetContract"];
+deployYourContract.tags = ["BopHoardingContract"];
+deployYourContract.tags = ["MHGDauto"];
+deployYourContract.tags = ["MhgdUsdcMint"];
