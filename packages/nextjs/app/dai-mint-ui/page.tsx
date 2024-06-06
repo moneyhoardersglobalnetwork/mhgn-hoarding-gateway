@@ -1,30 +1,29 @@
-
+import { ApproveDai } from "./_components/ApproveDai";
+import { ApproveMhgd } from "./_components/ApproveMhgd";
+import { Mint } from "./_components/Mint";
+import { MintContractData } from "./_components/MintContractData";
+import { SwapDai } from "./_components/SwapDai";
+import { SwapMhgd } from "./_components/SwapMhgd";
 import type { NextPage } from "next";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
-import { ApproveMhgd } from "./_components/ApproveMhgd";
-import { ApproveDai } from "./_components/ApproveDai";
-import { MintContractData } from "./_components/MintContractData";
-import { Mint } from "./_components/Mint";
-import { SwapMhgd } from "./_components/SwapMhgd";
-import { SwapDai } from "./_components/SwapDai";
-
 
 export const metadata = getMetadata({
-  title: "MHGD-USDC MINT UI",
+  title: "MHGD-DAI MINT UI",
   description: "Interface for interacting with the MHGD & USDC smart contracts",
 });
 
-const USDCMINTUI: NextPage = () => {
+const DAIMINTUI: NextPage = () => {
   return (
     <>
+      <div className="text-center mt-8 bg-black p-10">
         <MintContractData />
         <ApproveDai />
         <ApproveMhgd />
         <Mint />
         <SwapDai />
         <SwapMhgd />
-      <div className="text-center mt-8 bg-secondary p-10">
-        <h1 className="text-4xl my-0">MHGD-USDC MINT</h1>
+
+        <h1 className="text-4xl my-0">MHGD-DAI MINT</h1>
         <p className="text-neutral">
           Allows hoarders to interact with the MHGD & USDC smart contracts.
           <br /> Check{" "}
@@ -37,4 +36,4 @@ const USDCMINTUI: NextPage = () => {
   );
 };
 
-export default USDCMINTUI;
+export default DAIMINTUI;

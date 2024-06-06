@@ -14,7 +14,7 @@ contract MhgdToken is ERC20, ERC20Burnable, AccessControl, ERC20Permit, ERC20Fla
 
     constructor()
         ERC20("Money Hoarders Global Dollar", "MHGD")
-        ERC20Permit("Money Hoarders GlobalDollar")
+        ERC20Permit("Money Hoarders Global Dollar")
     {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);

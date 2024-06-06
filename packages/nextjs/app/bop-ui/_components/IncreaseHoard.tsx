@@ -1,4 +1,5 @@
 "use client";
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
@@ -12,7 +13,7 @@ export const IncreaseHoard = () => {
   return (
     <div className="flex bg-[url('/assets/background.jpeg')] relative pb-10">
       <div className="flex flex-col w-full mx-5 sm:mx-8 2xl:mx-20">
-        <div className="flex flex-col mt-6 px-7 py-8 bg-base-200 opacity-80 rounded-2xl shadow-lg border-2 border-primary">
+        <div className="flex flex-col mt-6 px-7 py-8 bg-white opacity-100 rounded-2xl shadow-lg border-2 border-primary">
           <span className="text-4xl sm:text-6xl text-black">Increase Your Hoard</span>
 
           <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-5">
@@ -24,20 +25,20 @@ export const IncreaseHoard = () => {
             />
             <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
               <div className="flex rounded-full border-2 border-primary p-1">
-              <button
-              className="btn btn-primary uppercase"
-                    onClick={async () => {
-                      try {
-                        if (amount !== undefined) {
-                          await writeContractAsync({ functionName: "IncreaseHoard", args: [BigInt(amount)] });
-                        }
-                      } catch (err) {
-                        console.error("Error calling execute function");
+                <button
+                  className="btn btn-primary uppercase"
+                  onClick={async () => {
+                    try {
+                      if (amount !== undefined) {
+                        await writeContractAsync({ functionName: "IncreaseHoard", args: [BigInt(amount)] });
                       }
-                    }}
-            >
-              Hoard!
-            </button>
+                    } catch (err) {
+                      console.error("Error calling execute function");
+                    }
+                  }}
+                >
+                  Hoard!
+                </button>
               </div>
             </div>
           </div>

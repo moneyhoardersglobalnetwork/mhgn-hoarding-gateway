@@ -1,6 +1,3 @@
-
-import type { NextPage } from "next";
-import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 import { ApproveBop } from "./_components/ApproveBop";
 import { BopHoardingContractData } from "./_components/BopHoardingContractData";
 import { Claim } from "./_components/Claim";
@@ -10,6 +7,8 @@ import { DonateBop } from "./_components/DonateBop";
 import { Hoard } from "./_components/Hoard";
 import { IncreaseHoard } from "./_components/IncreaseHoard";
 import { UnHoard } from "./_components/UnHoard";
+import type { NextPage } from "next";
+import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
   title: "BOP UI",
@@ -19,7 +18,8 @@ export const metadata = getMetadata({
 const BOPUI: NextPage = () => {
   return (
     <>
-         <ContractData />
+      <div className="text-center mt-8 bg-black p-10">
+        <ContractData />
         <BopHoardingContractData />
         <ContractInteraction />
         <ApproveBop />
@@ -28,7 +28,7 @@ const BOPUI: NextPage = () => {
         <IncreaseHoard />
         <UnHoard />
         <Claim />
-      <div className="text-center mt-8 bg-secondary p-10">
+
         <h1 className="text-4xl my-0">BOP UI</h1>
         <p className="text-neutral">
           Allows hoarders to interact with the BOP smart contracts.

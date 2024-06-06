@@ -18,7 +18,7 @@ export const Claim = () => {
       <HareIcon className="absolute right-0 bottom-24" />
       <div className="flex flex-col w-full mx-5 sm:mx-8 2xl:mx-20 items-center">
         <div className={`mt-10 flex gap-2 ${visible ? "" : "invisible"} max-w-2xl`}>
-          <div className="flex flex-col mt-6 px-7 py-8 bg-base-200 opacity-80 rounded-2xl shadow-lg border-2 border-primary items-center">
+          <div className="flex flex-col mt-6 px-7 py-8 bg-white opacity-100 rounded-2xl shadow-lg border-2 border-primary items-center">
             <span className="text-4xl sm:text-6xl text-black">Claim Your Rewards</span>
 
             <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-5">

@@ -11,7 +11,7 @@ interface IMhgdToken {
     function transfer(address, uint256) external;
 }
 
-contract MhgdDaiMint2 is ReentrancyGuard {
+contract MhgdDaiMint is ReentrancyGuard {
     address public immutable owner;
       struct Minter {
         uint256 minted;

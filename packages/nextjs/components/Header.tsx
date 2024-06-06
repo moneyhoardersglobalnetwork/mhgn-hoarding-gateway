@@ -4,7 +4,14 @@ import React, { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BanknotesIcon, CurrencyDollarIcon, Bars3Icon, BugAntIcon, MagnifyingGlassIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import {
+  BanknotesIcon,
+  Bars3Icon,
+  BugAntIcon,
+  CurrencyDollarIcon,
+  MagnifyingGlassIcon,
+  SparklesIcon,
+} from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
@@ -22,28 +29,35 @@ export const menuLinks: HeaderMenuLink[] = [
   {
     label: "BOP UI",
     href: "/bop-ui",
-    icon: <BanknotesIcon className="h-4 w-4" />,
+    icon: <CurrencyDollarIcon className="h-4 w-4" />,
   },
   {
     label: "MHGD UI",
     href: "/mhgd-ui",
-    icon: <CurrencyDollarIcon className="h-4 w-4" />,
+    icon: <BanknotesIcon className="h-4 w-4" />,
   },
   {
     label: "MHGD-DAI MINT",
     href: "/dai-mint-ui",
-    icon: <CurrencyDollarIcon className="h-4 w-4" />,
+    icon: <BanknotesIcon className="h-4 w-4" />,
   },
   {
     label: "MHGD-USDC MINT",
     href: "/usdc-mint-ui",
-    icon: <BugAntIcon className="h-4 w-4" />,
+    icon: <BanknotesIcon className="h-4 w-4" />,
   },
+  {
+    label: "WBOP UI",
+    href: "/wbop-ui",
+    icon: <BanknotesIcon className="h-4 w-4" />,
+  },
+
+  /*
   {
     label: "Debug Contracts",
     href: "/debug",
     icon: <BugAntIcon className="h-4 w-4" />,
-  },
+  },*/
 ];
 
 export const HeaderMenuLinks = () => {
@@ -59,7 +73,7 @@ export const HeaderMenuLinks = () => {
               href={href}
               passHref
               className={`${
-                isActive ? "bg-secondary shadow-md" : ""
+                isActive ? "bg-primary shadow-md" : ""
               } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
             >
               {icon}
@@ -84,7 +98,7 @@ export const Header = () => {
   );
 
   return (
-    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
+    <div className="sticky lg:static top-0 navbar bg-black min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
       <div className="navbar-start w-auto lg:w-1/2">
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label
@@ -110,7 +124,7 @@ export const Header = () => {
         </div>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
           <div className="flex relative w-40 h-20">
-            <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.png" />
+            <Image alt="Hoarding Gateway logo" className="cursor-pointer" fill src="/logo.png" />
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
