@@ -15,22 +15,22 @@ export const MintContractData = () => {
   const { address } = useAccount();
 
   const { data: totalMintTrans } = useScaffoldReadContract({
-    contractName: "MhgdDaiMint2",
+    contractName: "MhgdDaiMint",
     functionName: "Total_Mint_Transactions",
   });
 
   const { data: minterHasMinted } = useScaffoldReadContract({
-    contractName: "MhgdDaiMint2",
+    contractName: "MhgdDaiMint",
     functionName: "Total_AllTime_Minted",
   });
 
   const { data: daiReserveBalance } = useScaffoldReadContract({
-    contractName: "MhgdDaiMint2",
+    contractName: "MhgdDaiMint",
     functionName: "daiReserve",
   });
 
   const { data: mhgdReserveBalance } = useScaffoldReadContract({
-    contractName: "MhgdDaiMint2",
+    contractName: "MhgdDaiMint",
     functionName: "mhgdReserve",
   });
 

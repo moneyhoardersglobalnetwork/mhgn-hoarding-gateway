@@ -31,7 +31,7 @@ contract MhgdHoardingContract is Ownable, ReentrancyGuard {
     event UnHoarded(address indexed user);
 
     constructor() {
-        hoardingToken = ERC20(0x649220e012e6D760502964b56B5a7E387084cA8C); //Sepolia
+        hoardingToken = ERC20(0x9460b9fed18Bd5aF7b99d88aaE7723cA331a7D14); //Amoy
     }
     //Function to hoard tokens.
     function Hoard(uint256 _amount) external nonReentrant {

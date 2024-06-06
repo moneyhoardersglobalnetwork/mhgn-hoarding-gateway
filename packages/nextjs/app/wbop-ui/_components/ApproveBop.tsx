@@ -11,7 +11,7 @@ import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 export const ApproveBop = () => {
   const [visible, setVisible] = useState(true);
   const [amount, approve_amount] = useState("");
-  const address = "0xD43c4684E437c9D9A1b53eCF6B5f0b259d5d6484";
+  const address = "0x9E5Aa68A04F9E28150bDE61BC416362B56F8A2A4";
   const { writeContractAsync } = useScaffoldWriteContract("BopToken");
 
   return (

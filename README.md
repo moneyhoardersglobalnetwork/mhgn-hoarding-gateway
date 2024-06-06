@@ -1,11 +1,11 @@
-# 🏗 Scaffold-ETH 2
+# MHGN Hoarding Gateway
 
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
+  <a href="https://moneyhoardersglobal.net">Website</a>
 </h4>
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+🧪 The Hub for all MHGN ecosystem assets and a gateway to the Hoarderverse.
 
 ⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
 
@@ -61,6 +61,26 @@ yarn start
 
 Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
 
+Vercel
+yarn vercel:yolo //Deploys to production and skips linting must delete project to redeploy try deploying to production with (yarn vercel:yolo --prod) command
+
+Github pushing
+Git Hub Staging, Commiting, Pushing //Commands for updating repo on github(Build this out)
+
+//Check remote origin
+
+git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+
+git remote -v
+
+git add . //adds modified files to commit# mhgn-hoarding-gateway
+
+git commit -m "update from local" // Commit your changes to be pushed to repo
+
+Use the --no-verify option to skip git commit hooks, e.g. git commit -m "commit message" --no-verify . When the --no-verify option is used, the pre-commit and commit-msg hooks are bypassed. Copied! You can also use the -n option, which is short for --no-verify .
+
+git push //push to repo //Push updates to repo (main)
+
 **What's next**:
 
 - Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
@@ -81,3 +101,5 @@ We welcome contributions to Scaffold-ETH 2!
 Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
 
 We will soon redeploy all contracts on Amoy and follow current distribution as much as possible to simulate real-world scenarios. BOP by MHGN was first deployed on Polygon Mainnet and Amoy is a fresh estnet to build out the MHGN ecosystem more.
+
+## How to use the MHGN Hoarding Gateway

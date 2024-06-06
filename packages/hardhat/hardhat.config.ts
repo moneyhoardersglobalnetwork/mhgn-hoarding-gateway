@@ -12,25 +12,45 @@ import "hardhat-deploy-ethers";
 
 // If not set, it uses ours Alchemy's default API key.
 // You can get your own at https://dashboard.alchemyapi.io
-const providerApiKey = process.env.ALCHEMY_API_KEY || "oKxs-03sij-U_N0iOlrSsZFr29-IqbuF";
+const providerApiKey = process.env.ALCHEMY_API_KEY || "wL0YrXJoCW4zXJeNds22I33_PiE8R-Gm";
 // If not set, it uses the hardhat account 0 private key.
 const deployerPrivateKey =
   process.env.DEPLOYER_PRIVATE_KEY ?? "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
 // If not set, it uses ours Etherscan default API key.
-const etherscanApiKey = process.env.ETHERSCAN_API_KEY || "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW";
+const etherscanApiKey = process.env.ETHERSCAN_API_KEY || "S93YCV2GH2YIAAY1CAH5QYYP4QKZJDYRUB";
+
+const COMPILER_SETTINGS = {
+  optimizer: {
+    enabled: true,
+    runs: 1000000,
+  },
+  metadata: {
+    bytecodeHash: "none",
+  },
+};
 
 const config: HardhatUserConfig = {
   solidity: {
-    version: "0.8.17",
-    settings: {
-      optimizer: {
-        enabled: true,
-        // https://docs.soliditylang.org/en/latest/using-the-compiler.html#optimizer-options
-        runs: 200,
+    compilers: [
+      {
+        version: "0.8.20",
+        settings: COMPILER_SETTINGS,
       },
-    },
+      {
+        version: "0.8.19",
+        settings: COMPILER_SETTINGS,
+      },
+      {
+        version: "0.8.7",
+        settings: COMPILER_SETTINGS,
+      },
+      {
+        version: "0.8.0",
+        settings: COMPILER_SETTINGS,
+      },
+    ],
   },
-  defaultNetwork: "localhost",
+  defaultNetwork: "polygonAmoy",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
@@ -74,8 +94,8 @@ const config: HardhatUserConfig = {
       url: `https://polygon-mainnet.g.alchemy.com/v2/${providerApiKey}`,
       accounts: [deployerPrivateKey],
     },
-    polygonMumbai: {
-      url: `https://polygon-mumbai.g.alchemy.com/v2/${providerApiKey}`,
+    polygonAmoy: {
+      url: `https://polygon-amoy.g.alchemy.com/v2/${providerApiKey}`,
       accounts: [deployerPrivateKey],
     },
     polygonZkEvm: {

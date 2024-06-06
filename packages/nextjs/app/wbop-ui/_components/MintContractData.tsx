@@ -15,23 +15,23 @@ export const MintContractData = () => {
   const { address } = useAccount();
 
   const { data: totalMintTrans } = useScaffoldReadContract({
-    contractName: "MhgdDaiMint2",
+    contractName: "WBOPMint",
     functionName: "Total_Mint_Transactions",
   });
 
   const { data: minterHasMinted } = useScaffoldReadContract({
-    contractName: "MhgdDaiMint2",
+    contractName: "WBOPMint",
     functionName: "Total_AllTime_Minted",
   });
 
-  const { data: daiReserveBalance } = useScaffoldReadContract({
-    contractName: "MhgdDaiMint2",
-    functionName: "daiReserve",
+  const { data: bopReserveBalance } = useScaffoldReadContract({
+    contractName: "WBOPMint",
+    functionName: "bopReserve",
   });
 
-  const { data: mhgdReserveBalance } = useScaffoldReadContract({
-    contractName: "MhgdDaiMint2",
-    functionName: "mhgdReserve",
+  const { data: wbopReserveBalance } = useScaffoldReadContract({
+    contractName: "WBOPMint",
+    functionName: "wbopReserve",
   });
 
   return (
@@ -53,13 +53,13 @@ export const MintContractData = () => {
       <div className="bg-white border border- rounded-xl flex">
         <div className="text-black text-3xl p-2 py-1 border-r border-primary flex items-center">BOP Reserve</div>
         <div className="text-black text-4xl text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
-          {parseFloat(formatEther(daiReserveBalance || "0")).toFixed(2)}
+          {parseFloat(formatEther(bopReserveBalance || "0")).toFixed(2)}
         </div>
       </div>
       <div className="bg-white border border- rounded-xl flex">
         <div className="text-black text-3xl p-2 py-1 border-r border-primary flex items-center">WBOP Reserve</div>
         <div className="text-black text-4xl text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
-          {parseFloat(formatEther(mhgdReserveBalance || "0")).toFixed(2)}
+          {parseFloat(formatEther(wbopReserveBalance || "0")).toFixed(2)}
         </div>
       </div>
     </div>

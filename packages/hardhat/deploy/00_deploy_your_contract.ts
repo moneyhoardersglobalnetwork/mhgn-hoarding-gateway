@@ -20,14 +20,25 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   */
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
-  
-  //const tokenAddress = "0x649220e012e6D760502964b56B5a7E387084cA8C"; // MHGD token
-  const _tokenAddress = "0x76f9d116a4263b0b193E3174bC5b52946B10548b"; //BOP token
- /
-  await deploy("YourContract", {
+
+  const _tokenAddress = "0x2C3aFc7E571cAF77C52505c46c33Bb493BF48264"; //BOP token
+  const router = "0x9C32fCB86BF0f4a1A8921a9Fe46de3198bb884B2"; // Amoy router
+  const link = "0x0Fd9e8d3aF1aaee056EB9e802c3A762a667b1904"; // Amoy link
+
+  await deploy("MhgdToken", {
     from: deployer,
     // Contract constructor arguments
-    args: [deployer],
+    args: [],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+
+  await deploy("DaiToken", {
+    from: deployer,
+    // Contract constructor arguments
+    args: [],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
@@ -44,7 +55,26 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
     autoMine: true,
   });
 
-  await deploy("MhgdToken", {
+  await deploy("WBOP", {
+    from: deployer,
+    // Contract constructor arguments
+    args: [],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+
+  await deploy("BopFaucetContract", {
+    from: deployer,
+    args: [_tokenAddress],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+
+  await deploy("BopHoardingContract", {
     from: deployer,
     // Contract constructor arguments
     args: [],
@@ -63,11 +93,11 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
     // automatically mining the contract deployment transaction. There is no effect on live networks.
     autoMine: true,
   });
-  
-  await deploy("BopHoardingContract", {
+
+  await deploy("MhgdDaiMint", {
     from: deployer,
     // Contract constructor arguments
-    args: [],
+    args: [deployer],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
@@ -84,10 +114,30 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
     autoMine: true,
   });
 
-  await deploy("BopFaucetContract", {
+  await deploy("UsdcCrossChainHoarding", {
     from: deployer,
     // Contract constructor arguments
-    args: [_tokenAddress],
+    args: [router, link],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+
+  await deploy("WBOPMint", {
+    from: deployer,
+    // Contract constructor arguments
+    args: [deployer],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+
+  await deploy("YourContract", {
+    from: deployer,
+    // Contract constructor arguments
+    args: [deployer],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
@@ -108,5 +158,5 @@ deployYourContract.tags = ["MhgdToken"];
 deployYourContract.tags = ["MhgdHoardingContract"];
 deployYourContract.tags = ["BopFaucetContract"];
 deployYourContract.tags = ["BopHoardingContract"];
-deployYourContract.tags = ["MHGDauto"];
+deployYourContract.tags = ["DaiToken"];
 deployYourContract.tags = ["MhgdUsdcMint"];

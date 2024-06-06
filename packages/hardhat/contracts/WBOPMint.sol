@@ -38,9 +38,9 @@ contract WBOPMint is ReentrancyGuard {
 
     constructor (address _owner) {
         // Address of the BOP token on Sepolia
-        bopToken = IERC20(0x76f9d116a4263b0b193E3174bC5b52946B10548b);
+        bopToken = IERC20(0x2C3aFc7E571cAF77C52505c46c33Bb493BF48264);
         // Address of the wbopToken contract Sepolia
-        wbopToken = IwbopToken(0x649220e012e6D760502964b56B5a7E387084cA8C); //Update this address
+        wbopToken = IwbopToken(0x2B040b07Fee31e75c542b828218Fd7578A122812); //Update this address
         owner = _owner;
     }
 
@@ -71,12 +71,12 @@ contract WBOPMint is ReentrancyGuard {
     /**
      * @dev Swaps the wbopToken to BOP less the swap fee.
      */
-    function swapWbop(uint256 wbopToken) external nonReentrant {
-        require(bopToken.balanceOf(address(this)) >= (wbopToken - SWAP_FEE), "Not enough BOP in reserve");
-        require(IERC20(address(wbopToken)).transferFrom(msg.sender, address(this), wbopToken), "Transfer of Wbop failed");
-        require(bopToken.transfer(msg.sender, wbopToken - SWAP_FEE), "Transfer of BOP failed");
-        bopReserve -= wbopToken;
-        wbopReserve += wbopToken;
+    function swapWbop(uint256 wbopAmount) external nonReentrant {
+        require(bopToken.balanceOf(address(this)) >= (wbopAmount - SWAP_FEE), "Not enough BOP in reserve");
+        require(IERC20(address(wbopToken)).transferFrom(msg.sender, address(this), wbopAmount), "Transfer of Wbop failed");
+        require(bopToken.transfer(msg.sender, wbopAmount - SWAP_FEE), "Transfer of BOP failed");
+        bopReserve -= wbopAmount;
+        wbopReserve += wbopAmount;
         feesCollected += SWAP_FEE;
         bopReserve += SWAP_FEE;
         Total_Wbop_Swap_Transactions += 1;
@@ -93,7 +93,7 @@ contract WBOPMint is ReentrancyGuard {
         bopReserve += SWAP_FEE;
         feesCollected += SWAP_FEE;
         wbopReserve -= bopAmount;
-        Total_BOP_Swap_Transactions += 1;
+        Total_Bop_Swap_Transactions += 1;
     }
 
 }

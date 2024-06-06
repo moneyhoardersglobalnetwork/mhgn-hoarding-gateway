@@ -31,7 +31,7 @@ contract BopHoardingContract is Ownable, ReentrancyGuard {
     event UnHoarded(address indexed user);
 
     constructor() {
-        hoardingToken = ERC20(0x76f9d116a4263b0b193E3174bC5b52946B10548b);  //Sepolia
+        hoardingToken = ERC20(0x2C3aFc7E571cAF77C52505c46c33Bb493BF48264);  //Amoy
     }
     //Function to hoard tokens.
     function Hoard(uint256 _amount) external nonReentrant {

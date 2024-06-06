@@ -13,7 +13,7 @@ contract WBOP is ERC20, ERC20Burnable, AccessControl, ERC20Permit, ERC20FlashMin
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
     constructor()
-        ERC20("Wrapped BOP by MHGN", "MHGD")
+        ERC20("Wrapped BOP by MHGN", "WBOP")
         ERC20Permit("Wrapped BOP by MHGN")
     {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);

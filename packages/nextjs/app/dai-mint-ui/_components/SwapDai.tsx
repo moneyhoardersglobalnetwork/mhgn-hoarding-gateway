@@ -10,7 +10,7 @@ import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 export const SwapDai = () => {
   const [visible, setVisible] = useState(true);
   const [usdcAmount, setUsdcAmount] = useState("");
-  const { writeContractAsync } = useScaffoldWriteContract("MhgdDaiMint2");
+  const { writeContractAsync } = useScaffoldWriteContract("MhgdDaiMint");
 
   return (
     <div className="grid justify-center  items-center bg-black relative pb-10">

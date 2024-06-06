@@ -41,9 +41,9 @@ contract MhgdUsdcMint is ReentrancyGuard {
     
     constructor (address _owner) {
         // Address of the USDC token on Sepolia
-        usdcToken = IERC20(0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238);
+        usdcToken = IERC20(0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582);
         // Address of the MhgdToken contract
-        mhgdToken = IMhgdToken(0x649220e012e6D760502964b56B5a7E387084cA8C);
+        mhgdToken = IMhgdToken(0x9460b9fed18Bd5aF7b99d88aaE7723cA331a7D14);
         owner = _owner;
     }
 

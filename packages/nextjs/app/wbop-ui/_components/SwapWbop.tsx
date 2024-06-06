@@ -10,7 +10,7 @@ import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 export const SwapWbop = () => {
   const [visible, setVisible] = useState(true);
   const [daiAmount, setDaiAmount] = useState("");
-  const { writeContractAsync } = useScaffoldWriteContract("MhgdUsdcMint");
+  const { writeContractAsync } = useScaffoldWriteContract("WBOPMint");
 
   return (
     <div className="grid justify-center  items-center bg-black relative pb-10">
@@ -40,7 +40,7 @@ export const SwapWbop = () => {
                             className="btn btn-primary uppercase"
                             onClick={async () => {
                               try {
-                                await writeContractAsync({ functionName: "swapMhgd", args: [BigInt(daiAmount)] });
+                                await writeContractAsync({ functionName: "swapWbop", args: [BigInt(daiAmount)] });
                               } catch (err) {
                                 console.error("Error calling execute function");
                               }

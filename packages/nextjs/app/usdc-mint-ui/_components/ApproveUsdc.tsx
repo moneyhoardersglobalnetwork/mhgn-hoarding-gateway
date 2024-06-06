@@ -10,7 +10,7 @@ import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 export const ApproveUsdc = () => {
   const [visible, setVisible] = useState(true);
   const [amount, approve_amount] = useState("");
-  const address = "0x0396362d2fDC82aA0e630E1A2878AE8742909560";
+  const address = "0x4B4eb09800e577471B903286f5d7BD2BeFB5d31a";
   const { writeContractAsync } = useScaffoldWriteContract("IERC20");
 
   return (

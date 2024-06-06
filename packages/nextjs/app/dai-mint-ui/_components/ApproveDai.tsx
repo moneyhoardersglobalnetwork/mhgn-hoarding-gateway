@@ -11,7 +11,7 @@ import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 export const ApproveDai = () => {
   const [visible, setVisible] = useState(true);
   const [amount, approve_amount] = useState("");
-  const address = "0xD43c4684E437c9D9A1b53eCF6B5f0b259d5d6484";
+  const address = "0x64B5bA45B5F02c72512C336a12284Dd8f58ef1d8";
   const { writeContractAsync } = useScaffoldWriteContract("DaiToken");
 
   return (

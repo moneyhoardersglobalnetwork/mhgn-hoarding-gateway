@@ -38,9 +38,9 @@ contract MhgdDaiMint is ReentrancyGuard {
 
     constructor (address _owner) {
         // Address of the DAI token on Sepolia
-        daiToken = IERC20(0xd0e81dE7F68A1AA2bdFdfDd2016ef313700e1Ef3);
+        daiToken = IERC20(0x520ff243919E21590785Fe48F5D86106D79166Ee);
         // Address of the MhgdToken contract
-        mhgdToken = IMhgdToken(0x649220e012e6D760502964b56B5a7E387084cA8C);
+        mhgdToken = IMhgdToken(0x9460b9fed18Bd5aF7b99d88aaE7723cA331a7D14);
         owner = _owner;
     }
 
