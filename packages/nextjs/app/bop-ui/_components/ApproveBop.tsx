@@ -23,7 +23,7 @@ export const ApproveBop = () => {
               <input
                 type="uint256"
                 placeholder="Amount"
-                className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/background.jpeg')] bg-[length:100%_100%] border border-primary text-black text-lg sm:text-2xl placeholder-black uppercase"
+                className="input font-bai-jamjuree w-full px-5 bg-white bg-[length:100%_100%] border border-primary text-black text-lg sm:text-2xl placeholder-black uppercase"
                 onChange={e => approve_amount(e.target.value)}
               />
               <div className="flex rounded-full border border-primary p-1 flex-shrink-0">

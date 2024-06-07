@@ -33,8 +33,8 @@ const Home: NextPage = () => {
 
         <div className="flex-grow bg-black w-full mt-16 px-8 py-12">
           <div className="flex justify-center items-center gap-12 flex-col sm:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
+            <div className="flex flex-col bg-white px-10 py-10 text-black text-center items-center max-w-xs rounded-3xl">
+              <BugAntIcon className="h-8 w-8 fill-" />
               <p>
                 Fully interact with all Hoarding Gateway Contracts{" "}
                 <Link href="/debug" passHref className="link">
@@ -43,10 +43,10 @@ const Home: NextPage = () => {
                 tab.
               </p>
             </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
+            <div className="flex flex-col bg-white px-10 py-10 text-black text-center items-center max-w-xs rounded-3xl">
+              <MagnifyingGlassIcon className="h-8 w-8 fill-primary" />
               <p>
-                Explore more on MHGN's Official Site{" "}
+                Explore more on MHGN Official Site{" "}
                 <Link href="https://moneyhoardersglobal.net" passHref className="link">
                   Visit MHGN
                 </Link>{" "}

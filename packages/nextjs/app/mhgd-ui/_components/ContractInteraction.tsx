@@ -19,7 +19,7 @@ export const ContractInteraction = () => {
             <div>
               <div className="text-black">
                 In this page you can interact with the <strong>MHGD Token</strong> quickly import to your wallet using
-                the contract address 0x649220e012e6D760502964b56B5a7E387084cA8C
+                the contract address 0x9460b9fed18Bd5aF7b99d88aaE7723cA331a7D14
               </div>
               <div className="mt-2 text-black">
                 Remember{" "}

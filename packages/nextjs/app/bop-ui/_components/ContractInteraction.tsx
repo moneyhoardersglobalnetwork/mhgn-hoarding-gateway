@@ -19,11 +19,11 @@ export const ContractInteraction = () => {
             <div>
               <div className="text-black">
                 In this page you can interact with the <strong>BOP Token</strong> quickly import to your wallet using
-                the contract address 0x76f9d116a4263b0b193E3174bC5b52946B10548b
+                the contract address 0x2C3aFc7E571cAF77C52505c46c33Bb493BF48264
               </div>
               <div className="mt-2 text-black">
-                Remember <code className="italic bg-white text-base font-bold [word-spacing:-0.5rem]">BOP</code> has
-                18 decimal places like ETH so sending 1 BOP using this interface would look like this 1 BOP =
+                Remember <code className="italic bg-white text-base font-bold [word-spacing:-0.5rem]">BOP</code> has 18
+                decimal places like ETH so sending 1 BOP using this interface would look like this 1 BOP =
                 <code className="italic bg-base-300 text-base font-bold [word-spacing:-0.5rem]"></code>
                 1000000000000000000 .
                 <code />
