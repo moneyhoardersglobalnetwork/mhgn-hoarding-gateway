@@ -18,7 +18,7 @@ export const metadata = getMetadata({
 const BOPUI: NextPage = () => {
   return (
     <>
-      <div className="text-center mt-8 bg-black p-10">
+      <div className="text-center  bg-black p-10">
         <ContractData />
         <BopHoardingContractData />
         <ContractInteraction />
@@ -32,10 +32,12 @@ const BOPUI: NextPage = () => {
         <h1 className="text-4xl my-0">BOP UI</h1>
         <p className="text-neutral">
           Allows hoarders to interact with the BOP smart contracts.
-          <br /> Check{" "}
-          <code className="italic bg-base-300 text-base font-bold [word-spacing:-0.5rem] px-1">
-            packages / nextjs / app / debug / page.tsx
-          </code>{" "}
+          <br /> Breakdown{" "}
+          <div>
+            <code className="italic  text-base font-bold  px-1">
+              BOP by MHGN is a digital commodity asset that is used to support the MHGN ecosystem.
+            </code>{" "}
+          </div>
         </p>
       </div>
     </>

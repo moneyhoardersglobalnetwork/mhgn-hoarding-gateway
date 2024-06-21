@@ -1,17 +1,24 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
+import { formatEther } from "ethers";
 import { CopyIcon } from "../assets/CopyIcon";
 import { DiamondIcon } from "../assets/DiamondIcon";
 import { HareIcon } from "../assets/HareIcon";
 import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
-import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldWriteContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 export const ApproveUsdc = () => {
   const [visible, setVisible] = useState(true);
   const [amount, approve_amount] = useState("");
   const address = "0x4B4eb09800e577471B903286f5d7BD2BeFB5d31a";
   const { writeContractAsync } = useScaffoldWriteContract("IERC20");
+
+  const { data: usdcTokenAllowance } = useScaffoldReadContract({
+    contractName: "IERC20",
+    functionName: "allowance",
+    args: [address, "0x4B4eb09800e577471B903286f5d7BD2BeFB5d31a"],
+  });
 
   return (
     <div className="flex  relative pb-10">

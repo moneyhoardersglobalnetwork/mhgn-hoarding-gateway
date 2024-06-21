@@ -78,17 +78,6 @@ export const UsdcHoardingContractData = () => {
     functionName: "totalHoarded",
   });
 
-  useScaffoldWatchContractEvent({
-    contractName: "UsdcCrossChainHoarding",
-    eventName: "Hoarded",
-    listener: logs => {
-      logs.map(log => {
-        const { user, amount } = log.args;
-        console.log("📡 Hoarded event", user, amount);
-      });
-    },
-  });
-
   const {
     data: hoardedEvents,
     isLoading: isLoadingEvents,

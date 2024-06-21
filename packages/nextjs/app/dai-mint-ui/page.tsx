@@ -15,7 +15,7 @@ export const metadata = getMetadata({
 const DAIMINTUI: NextPage = () => {
   return (
     <>
-      <div className="text-center mt-8 bg-black p-10">
+      <div className="text-center  bg-black p-10">
         <MintContractData />
         <ApproveDai />
         <ApproveMhgd />

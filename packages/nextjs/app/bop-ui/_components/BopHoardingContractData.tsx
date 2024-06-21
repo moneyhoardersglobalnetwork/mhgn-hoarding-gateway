@@ -9,8 +9,6 @@ import {
   useScaffoldContract,
   useScaffoldEventHistory,
   useScaffoldReadContract,
-  useScaffoldWatchContractEvent,
-  useScaffoldWriteContract,
 } from "~~/hooks/scaffold-eth";
 
 export const BopHoardingContractData = () => {
@@ -30,7 +28,7 @@ export const BopHoardingContractData = () => {
   const { data: bopTokenAllowance } = useScaffoldReadContract({
     contractName: "BopToken",
     functionName: "allowance",
-    args: [address, "0xB2c6F1f46944bd34f26363bAb3848aCB8b8f546d"],
+    args: [address, "0x23e1AC774ece39C2448D3a33c864E620a4ea2682"],
   });
 
   const { data: hoardingBalance } = useScaffoldReadContract({
@@ -75,17 +73,6 @@ export const BopHoardingContractData = () => {
   const { data: hoarded } = useScaffoldReadContract({
     contractName: "BopHoardingContract",
     functionName: "totalHoarded",
-  });
-
-  useScaffoldWatchContractEvent({
-    contractName: "BopHoardingContract",
-    eventName: "Hoarded",
-    listener: logs => {
-      logs.map(log => {
-        const { user, amount } = log.args;
-        console.log("📡 Hoarded event", user, amount);
-      });
-    },
   });
 
   const {
@@ -149,35 +136,35 @@ export const BopHoardingContractData = () => {
         </div>
       </p>
       <div className="block justify-between w-full">
-        <div className="bg-white border border-primary rounded-xl flex">
-          <div className="p-2 py-1 border-r border-primary flex items-top w-min text-black">Total Hoarders</div>
-          <div className="text-2xl text-black text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
+        <div className="bg-[url('/assets/background.jpeg')] border border-primary rounded-xl flex">
+          <div className="p-2 py-1 border-r border-primary flex items-top w-min text-white">Total Hoarders</div>
+          <div className="text-2xl text-white text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
             {Total_Hoarders?.toString() || "0"}
           </div>
         </div>
-        <div className="bg-white border border-primary rounded-xl flex">
-          <div className="p-2 py-1 border-r border-primary flex items-top w-min text-black">Total Reward Pool</div>
-          <div className="text-2xl text-black text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
+        <div className="bg-[url('/assets/background.jpeg')] border border-primary rounded-xl flex">
+          <div className="p-2 py-1 border-r border-primary flex items-top w-min text-white">Total Reward Pool</div>
+          <div className="text-2xl text-white text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
             {parseFloat(formatEther(Total_Reward_Pool || "0")).toFixed(2)}
           </div>
         </div>
-        <div className="bg-white border border-primary rounded-xl flex">
-          <div className="p-2 py-1 border-r border-primary flex items-top w-min text-black">Total Hoarded</div>
-          <div className="text-2xl text-black text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
+        <div className="bg-[url('/assets/background.jpeg')] border border-primary rounded-xl flex">
+          <div className="p-2 py-1 border-r border-primary flex items-top w-min text-white">Total Hoarded</div>
+          <div className="text-2xl text-white text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
             {parseFloat(formatEther(hoarded || "0")).toFixed(2)}
           </div>
         </div>
-        <div className="bg-white border border-primary rounded-xl flex">
-          <div className="p-2 py-1 border-r border-primary flex items-top w-min text-black">Hoarding Stats</div>
-          <div className="text-2xl text-black text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
+        <div className="bg-[url('/assets/background.jpeg')] border border-primary rounded-xl flex">
+          <div className="p-2 py-1 border-r border-primary flex items-top w-min text-white">Hoarding Stats</div>
+          <div className="text-2xl text-white text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
             {totalHoarded?.toString() || "0"}
           </div>
         </div>
         <div>
           <div className="flex justify-between w-full">
-            <div className="bg-white border border-primary rounded-xl flex">
-              <div className="p-2 py-1 border-r border-primary flex items-top w-min text-black">Total Supply</div>
-              <div className="text-2xl text-black text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
+            <div className="bg-[url('/assets/background.jpeg')] border border-primary rounded-xl flex">
+              <div className="p-2 py-1 border-r border-primary flex items-top w-min text-white">Total Supply</div>
+              <div className="text-2xl text-white text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
                 {parseFloat(formatEther(totalSupply || "0")).toFixed(2)}
               </div>
             </div>
@@ -186,19 +173,19 @@ export const BopHoardingContractData = () => {
       </div>
       <p></p>
       <div className="grid lg:grid-cols-3 flex-grow">
-        <div className="bg-white border border-primary rounded-xl flex">
-          <div className="p-2 py-1 border-r border-primary flex items-top w-min text-black">
+        <div className="bg-[url('/assets/background.jpeg')] border border-primary rounded-xl flex">
+          <div className="p-2 py-1 border-r border-primary flex items-top w-min text-white">
             Hoarding Time in Seconds
           </div>
-          <div className="text-2xl text-black text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
+          <div className="text-2xl text-white text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
             {GetHoardingingTimeInSeconds?.toString() || "0"}
           </div>
         </div>
         <div></div>
         <div className="grid lg:grid-cols-1 flex-grow">
-          <div className="bg-white border border-primary rounded-xl flex">
-            <div className="p-2 py-1 border-r border-primary flex items-top w-min text-black">Pending Rewards</div>
-            <div className="text-2xl text-black text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
+          <div className="bg-[url('/assets/background.jpeg')] border border-primary rounded-xl flex">
+            <div className="p-2 py-1 border-r border-primary flex items-top w-min text-white">Pending Rewards</div>
+            <div className="text-2xl text-white text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
               {parseFloat(formatEther(calculateReward || "0")).toFixed(4)}
             </div>
           </div>

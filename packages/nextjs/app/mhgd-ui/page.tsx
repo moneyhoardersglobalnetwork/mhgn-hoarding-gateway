@@ -18,7 +18,7 @@ export const metadata = getMetadata({
 const MHGDUI: NextPage = () => {
   return (
     <>
-      <div className="text-center mt-8 bg-black p-10">
+      <div className="text-center bg-black p-10">
         <ContractData />
         <MhgdHoardingContractData />
         <ContractInteraction />

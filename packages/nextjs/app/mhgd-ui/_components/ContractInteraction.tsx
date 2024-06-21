@@ -11,7 +11,7 @@ export const ContractInteraction = () => {
   const { writeContractAsync } = useScaffoldWriteContract("YourContract");
 
   return (
-    <div className="flex bg-[url('/assets/background.jpeg')] relative pb-10">
+    <div className="flex bg-black relative pb-10">
       <div className="flex flex-col w-full mx-5 sm:mx-8 2xl:mx-20">
         <div className={`mt-10 flex gap-2 ${visible ? "" : "invisible"} max-w-2xl`}>
           <div className="flex gap-5 bg-white bg-opacity-80 z-0 p-7 rounded-2xl shadow-lg">
@@ -39,8 +39,8 @@ export const ContractInteraction = () => {
           </button>
         </div>
 
-        <div className="flex flex-col mt-6 px-7 py-8 bg-white opacity-100 rounded-2xl shadow-lg border-2 border-primary">
-          <span className="text-4xl sm:text-6xl text-black">Set a Greeting_</span>
+        <div className="flex flex-col mt-6 px-7 py-8 bg-[url('/assets/background.jpeg')] opacity-100 rounded-2xl shadow-lg border-2 border-primary">
+          <span className="text-4xl sm:text-6xl text-white">Set a Greeting_</span>
 
           <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-5">
             <input
@@ -71,7 +71,7 @@ export const ContractInteraction = () => {
 
           <div className="mt-4 flex gap-2 items-start">
             <span className="text-sm leading-tight">Price:</span>
-            <div className="badge badge-warning">0.01 ETH + Gas</div>
+            <div className="badge badge-warning">0.01 MATIC + Gas</div>
           </div>
         </div>
       </div>

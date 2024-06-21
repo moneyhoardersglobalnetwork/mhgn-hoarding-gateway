@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { formatEther } from "ethers";
+import { formatEther, formatUnits } from "ethers";
 import { useAccount } from "wagmi";
 import {
   useAnimationConfig,
@@ -13,6 +13,40 @@ import {
 
 export const MintContractData = () => {
   const { address } = useAccount();
+
+  const { data: mhgdTokenSymbol } = useScaffoldReadContract({
+    contractName: "MhgdToken",
+    functionName: "symbol",
+  });
+
+  const { data: mhgdTokenBalance } = useScaffoldReadContract({
+    contractName: "MhgdToken",
+    functionName: "balanceOf",
+    args: [address],
+  });
+
+  const { data: mhgdTokenAllowance } = useScaffoldReadContract({
+    contractName: "MhgdToken",
+    functionName: "allowance",
+    args: [address, "0x64B5bA45B5F02c72512C336a12284Dd8f58ef1d8"],
+  });
+
+  const { data: daiTokenSymbol } = useScaffoldReadContract({
+    contractName: "DaiToken",
+    functionName: "symbol",
+  });
+
+  const { data: daiTokenBalance } = useScaffoldReadContract({
+    contractName: "DaiToken",
+    functionName: "balanceOf",
+    args: [address],
+  });
+
+  const { data: daiTokenAllowance } = useScaffoldReadContract({
+    contractName: "DaiToken",
+    functionName: "allowance",
+    args: [address, "0x64B5bA45B5F02c72512C336a12284Dd8f58ef1d8"],
+  });
 
   const { data: totalMintTrans } = useScaffoldReadContract({
     contractName: "MhgdDaiMint",
@@ -62,6 +96,35 @@ export const MintContractData = () => {
           {parseFloat(formatEther(mhgdReserveBalance || "0")).toFixed(2)}
         </div>
       </div>
+      <div className="text-xl text-white">
+           wallet balance:{" "}
+          <div className="inline-flex items-center justify-center text-white">
+            {parseFloat(formatEther(mhgdTokenBalance || "0")).toFixed(2)}
+            <span className="font-bold ml-1">{mhgdTokenSymbol}</span>
+          </div>
+    </div>
+    <div className="text-xl text-white">
+           wallet balance:{" "}
+          <div className="inline-flex items-center justify-center text-white">
+          {parseFloat(formatEther(daiTokenBalance || "0")).toFixed(2)}
+            <span className="font-bold ml-1">{daiTokenSymbol}</span>
+          </div>
+          
+          <div className="text-xl text-white">
+           MHGD Allowance:{" "}
+          <div className="inline-flex items-center justify-center text-white">
+            {parseFloat(formatEther(mhgdTokenAllowance || "0")).toFixed(2)}
+            <span className="font-bold ml-1">{mhgdTokenSymbol}</span>
+          </div>
+        </div>
+        <div className="text-xl text-white">
+           DAI Allowance:{" "}
+          <div className="inline-flex items-center justify-center text-white">
+          {parseFloat(formatEther(daiTokenAllowance || "0")).toFixed(2)}
+            <span className="font-bold ml-1">{daiTokenSymbol}</span>
+          </div>
+        </div>
+    </div>
     </div>
   );
 };

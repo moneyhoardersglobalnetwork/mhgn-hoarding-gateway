@@ -48,6 +48,7 @@
     "@chainlink/contracts-ccip": "^1.4.0",
     "@openzeppelin/contracts": "^5.0.2",
     "ethers": "^6.12.1",
-    "vercel": "latest"
+    "vercel": "latest",
+    "wagmi": "^2.10.4"
   }
 }

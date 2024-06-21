@@ -11,10 +11,10 @@ export const IncreaseHoard = () => {
   const { writeContractAsync } = useScaffoldWriteContract("MhgdHoardingContract");
 
   return (
-    <div className="flex bg-[url('/assets/background.jpeg')] relative pb-10">
+    <div className="flex bg-black relative pb-10">
       <div className="flex flex-col w-full mx-5 sm:mx-8 2xl:mx-20">
-        <div className="flex flex-col mt-6 px-7 py-8 bg-white opacity-100 rounded-2xl shadow-lg border-2 border-primary">
-          <span className="text-4xl sm:text-6xl text-black">Increase Your Hoard</span>
+        <div className="flex flex-col mt-6 px-7 py-8 bg-[url('/assets/background.jpeg')] opacity-100 rounded-2xl shadow-lg border-2 border-primary">
+          <span className="text-4xl sm:text-6xl text-white">Increase Your Hoard</span>
 
           <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-5">
             <input

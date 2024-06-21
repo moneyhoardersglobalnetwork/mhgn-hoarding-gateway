@@ -1,18 +1,40 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { formatEther } from "ethers";
+import { formatEther, formatUnits } from "ethers";
 import { useAccount } from "wagmi";
-import {
-  useAnimationConfig,
-  useScaffoldContract,
-  useScaffoldEventHistory,
-  useScaffoldReadContract,
-  useScaffoldWatchContractEvent,
-} from "~~/hooks/scaffold-eth";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 export const MintContractData = () => {
   const { address } = useAccount();
+
+  const { data: mhgdTokenSymbol } = useScaffoldReadContract({
+    contractName: "MhgdToken",
+    functionName: "symbol",
+  });
+
+  const { data: mhgdTokenBalance } = useScaffoldReadContract({
+    contractName: "MhgdToken",
+    functionName: "balanceOf",
+    args: [address],
+  });
+
+  const { data: mhgdTokenAllowance } = useScaffoldReadContract({
+    contractName: "MhgdToken",
+    functionName: "allowance",
+    args: [address, "0x4B4eb09800e577471B903286f5d7BD2BeFB5d31a"],
+  });
+
+  const { data: usdcTokenBalance } = useScaffoldReadContract({
+    contractName: "IERC20",
+    functionName: "balanceOf",
+    args: [address],
+  });
+
+  const { data: usdcTokenAllowance } = useScaffoldReadContract({
+    contractName: "IERC20",
+    functionName: "allowance",
+    args: [address, "0x4B4eb09800e577471B903286f5d7BD2BeFB5d31a"],
+  });
 
   const { data: totalMintTrans } = useScaffoldReadContract({
     contractName: "MhgdUsdcMint",
@@ -53,13 +75,41 @@ export const MintContractData = () => {
       <div className="bg-white border border- rounded-xl flex">
         <div className="text-3xl p-2 py-1 border-r border-primary text-black flex items-center">USDC Reserve</div>
         <div className="text-4xl text-black text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
-          {usdcReserveBalance?.toString() || "0"}
+          {Number.parseFloat(formatUnits(usdcReserveBalance || "0", 6))}
         </div>
       </div>
       <div className="bg-white border border- rounded-xl flex">
         <div className="text-3xl p-2 py-1 border-r border-primary text-black flex items-center">MHGD Reserve</div>
         <div className="text-4xl text-black text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
           {parseFloat(formatEther(mhgdReserveBalance || "0")).toFixed(2)}
+        </div>
+      </div>
+      <div className="text-xl text-white">
+        wallet balance:{" "}
+        <div className="inline-flex items-center justify-center text-white">
+          {parseFloat(formatEther(mhgdTokenBalance || "0")).toFixed(2)}
+          <span className="font-bold ml-1">{mhgdTokenSymbol}</span>
+        </div>
+      </div>
+      <div className="text-xl text-white">
+        wallet balance:{" "}
+        <div className="inline-flex items-center justify-center text-white">
+          {Number.parseFloat(formatUnits(usdcTokenBalance || "0", 6))}
+          <span className="font-bold ml-1">USDC</span>
+        </div>
+        <div className="text-xl text-white">
+          MHGD Allowance:{" "}
+          <div className="inline-flex items-center justify-center text-white">
+            {parseFloat(formatEther(mhgdTokenAllowance || "0")).toFixed(2)}
+            <span className="font-bold ml-1">{mhgdTokenSymbol}</span>
+          </div>
+        </div>
+        <div className="text-xl text-white">
+          USDC Allowance:{" "}
+          <div className="inline-flex items-center justify-center text-white">
+            {Number.parseFloat(formatUnits(usdcTokenAllowance || "0", 6))}
+            <span className="font-bold ml-1">USDC</span>
+          </div>
         </div>
       </div>
     </div>

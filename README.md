@@ -103,3 +103,9 @@ Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob
 We will soon redeploy all contracts on Amoy and follow current distribution as much as possible to simulate real-world scenarios. BOP by MHGN was first deployed on Polygon Mainnet and Amoy is a fresh estnet to build out the MHGN ecosystem more.
 
 ## How to use the MHGN Hoarding Gateway
+
+## ToDoList
+
+Work on Social Login integration
+Work on built-in price feeds using ChainLink
+Work on in app DEX for Native token swaps

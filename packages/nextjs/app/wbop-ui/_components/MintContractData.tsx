@@ -14,6 +14,40 @@ import {
 export const MintContractData = () => {
   const { address } = useAccount();
 
+  const { data: bopTokenSymbol } = useScaffoldReadContract({
+    contractName: "BopToken",
+    functionName: "symbol",
+  });
+
+  const { data: bopTokenBalance } = useScaffoldReadContract({
+    contractName: "BopToken",
+    functionName: "balanceOf",
+    args: [address],
+  });
+
+  const { data: bopTokenAllowance } = useScaffoldReadContract({
+    contractName: "BopToken",
+    functionName: "allowance",
+    args: [address, "0x9E5Aa68A04F9E28150bDE61BC416362B56F8A2A4"],
+  });
+
+  const { data: wbopTokenSymbol } = useScaffoldReadContract({
+    contractName: "WBOP",
+    functionName: "symbol",
+  });
+
+  const { data: wbopTokenBalance } = useScaffoldReadContract({
+    contractName: "WBOP",
+    functionName: "balanceOf",
+    args: [address],
+  });
+
+  const { data: wbopTokenAllowance } = useScaffoldReadContract({
+    contractName: "WBOP",
+    functionName: "allowance",
+    args: [address, "0x9E5Aa68A04F9E28150bDE61BC416362B56F8A2A4"],
+  });
+
   const { data: totalMintTrans } = useScaffoldReadContract({
     contractName: "WBOPMint",
     functionName: "Total_Mint_Transactions",
@@ -62,6 +96,34 @@ export const MintContractData = () => {
           {parseFloat(formatEther(wbopReserveBalance || "0")).toFixed(2)}
         </div>
       </div>
+      <div className="text-xl text-white">
+           wallet balance:{" "}
+          <div className="inline-flex items-center justify-center text-white">
+            {parseFloat(formatEther(bopTokenBalance || "0")).toFixed(2)}
+            <span className="font-bold ml-1">{bopTokenSymbol}</span>
+          </div>
+    </div>
+          <div className="text-xl text-white">
+           BOP Allowance:{" "}
+          <div className="inline-flex items-center justify-center text-white">
+            {parseFloat(formatEther(bopTokenAllowance || "0")).toFixed(2)}
+            <span className="font-bold ml-1">{bopTokenSymbol}</span>
+          </div>
+      <div className="text-xl text-white">
+           wallet balance:{" "}
+          <div className="inline-flex items-center justify-center text-white">
+            {parseFloat(formatEther(wbopTokenBalance || "0")).toFixed(2)}
+            <span className="font-bold ml-1">{wbopTokenSymbol}</span>
+          </div>
+    </div>
+          <div className="text-xl text-white">
+           WBOP Allowance:{" "}
+          <div className="inline-flex items-center justify-center text-white">
+            {parseFloat(formatEther(wbopTokenAllowance || "0")).toFixed(2)}
+            <span className="font-bold ml-1">{wbopTokenSymbol}</span>
+          </div>
+        </div>
+    </div>
     </div>
   );
 };
